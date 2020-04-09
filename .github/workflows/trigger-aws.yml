@@ -11,7 +11,7 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-            echo "${{steps.file_changes.outputs.files}}//config/"
+            echo "${{steps.file_changes.outputs.files}}"
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
