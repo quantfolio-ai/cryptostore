@@ -12,6 +12,7 @@ jobs:
         uses: trilom/file-changes-action@v1.2.3
       - run: |
             python -c 'import os, json; print(json.dumps(os.listdir("../")))'
+            pwd
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
