@@ -11,8 +11,8 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-            python -c 'import os, json; print(json.dumps(os.listdir("../")))'
-            pwd
+            python -c 'import os, json; print(json.dumps(os.listdir("")))'
+            ls
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
