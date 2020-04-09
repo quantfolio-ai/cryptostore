@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        active_exchanges: ${{ steps.file_changes.outputs.files}}
+        active_exchanges: ${{ changes.steps.file_changes.outputs.files}}
     steps:
     - name: Checkout
       id: checkout-source
