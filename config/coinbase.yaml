@@ -1,0 +1,8 @@
+exchanges:
+    COINBASE:
+        retries: -1
+        l3_book:
+            symbols: [BTC-USD, ETH-USD]
+            book_delta: true
+        trades: [BTC-USD, ETH-USD]
+        ticker: [BTC-USD, ETH-USD]
