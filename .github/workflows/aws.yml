@@ -32,6 +32,11 @@ on:
 name: Deploy to Amazon ECS
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    steps:
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.3
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
