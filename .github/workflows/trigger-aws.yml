@@ -12,6 +12,9 @@ jobs:
     steps:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
+      - run: |
+         echo 'This is a foo test' | sed -e 's/\<foo\>//g'
+         
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
