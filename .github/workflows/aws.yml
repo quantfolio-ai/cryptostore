@@ -25,26 +25,18 @@
 #    and best practices on handling the access key credentials.
 
 on:
-  push:
-    branches:
-      - dev
+  repository_dispatch:
+    types: [matrix-ci]
 
 name: Deploy to Amazon ECS
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    steps:
-      - id: file_changes
-        uses: trilom/file-changes-action@v1.2.3
-      - run: |
-            echo "::add-matrix name=exchange::${{ steps.file_changes.outputs.files }}"
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        active_exchanges: ${{ jobs.changes.steps.file_changes.matrix }}
+        active_exchanges: ${{  github.event.client_payload.images }}
     steps:
     - name: Checkout
       id: checkout-source
