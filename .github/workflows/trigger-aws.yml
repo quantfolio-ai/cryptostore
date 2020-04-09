@@ -1,0 +1,21 @@
+on:
+  push:
+    branches: dev
+
+name: trigger-aws
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    steps:
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.3
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          event-type: 'matrix-ci'
+          client-payload: '{"configs": ${{ steps.file_changes.outputs.files }} }'
