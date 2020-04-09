@@ -8,7 +8,6 @@ jobs:
   trigger:
     runs-on: ubuntu-latest
     steps:
-      - name: Get File Changes
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
         
