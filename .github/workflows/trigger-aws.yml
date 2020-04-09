@@ -5,14 +5,12 @@ on:
 name: trigger-aws
 
 jobs:
-  changes:
-    runs-on: ubuntu-latest
-    steps:
-      - id: file_changes
-        uses: trilom/file-changes-action@v1.2.3
   trigger:
     runs-on: ubuntu-latest
     steps:
+      - name: Get File Changes
+      - id: file_changes
+        uses: trilom/file-changes-action@v1.2.3
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
