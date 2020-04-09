@@ -18,4 +18,4 @@ jobs:
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: 'matrix-ci'
-          client-payload: '{"configs": ${{ steps.file_changes.outputs.files }} }'
+          client-payload: ${{ steps.file_changes.outputs.files }}
