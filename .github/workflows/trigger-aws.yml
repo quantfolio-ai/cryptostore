@@ -29,4 +29,4 @@ jobs:
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: 'matrix-ci'
-          client-payload:  '{"images": ${{steps.file_changes.outputs.files}}}'
+          client-payload:  '{"images": ${{steps.file_changes.outputs.files}} }'
