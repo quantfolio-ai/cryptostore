@@ -13,8 +13,7 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-          array=${{steps.file_changes.outputs.files}}
-          newarray=( $(printf "%s\n" "${array[@]}" | grep ^elem/) )
+          newarray=( $(printf "%s\n" "${${{steps.file_changes.outputs.files}}[@]}" | grep ^elem/) )
           echo "::set-output name=configs::{${{steps.file_changes.outputs.files}}[@]/config}"
           echo "${{steps.file_changes.outputs.files}}"
           echo "${{steps.file_changes.outputs.files}}" | sed -e 's/config\///g'  | sed -e 's/.yaml//g'
