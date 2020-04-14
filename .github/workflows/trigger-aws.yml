@@ -13,13 +13,15 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-          echo "::set-output name=configs:${{steps.file_changes.outputs.files}}[@]/config"
+          array=${{steps.file_changes.outputs.files}}
+          newarray=( $(printf "%s\n" "${array[@]}" | grep ^elem/) )
+          echo "::set-output name=configs::{${{steps.file_changes.outputs.files}}[@]/config}"
           echo "${{steps.file_changes.outputs.files}}"
           echo "${{steps.file_changes.outputs.files}}" | sed -e 's/config\///g'  | sed -e 's/.yaml//g'
 
       - name: test
         run: echo "${{steps.file_changes.outputs.configs}}"
-        
+
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
