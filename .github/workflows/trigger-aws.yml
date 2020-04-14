@@ -13,9 +13,9 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-        echo "${{steps.file_changes.outputs.files}}"
-        echo "${{steps.file_changes.outputs.files}}" | grep config
-        echo "${{steps.file_changes.outputs.files}}" | sed -e 's/config\///g'  | sed -e 's/.yaml//g'
+          echo "${{steps.file_changes.outputs.files}}"
+          echo "${{steps.file_changes.outputs.files}}" | grep config
+          echo "${{steps.file_changes.outputs.files}}" | sed -e 's/config\///g'  | sed -e 's/.yaml//g'
 
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
