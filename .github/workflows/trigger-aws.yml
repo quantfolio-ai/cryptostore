@@ -13,7 +13,7 @@ jobs:
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.3
       - run: |
-          array=(${{steps.file_changes.outputs.files}})
+          array=${{steps.file_changes.outputs.files}}
           newarray=( $(printf "%s\n" "${array[@]}" | grep ^elem/) )
           echo "::set-output name=configs::{${{steps.file_changes.outputs.files}}[@]/config}"
           echo "${{steps.file_changes.outputs.files}}"
