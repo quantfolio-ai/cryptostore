@@ -1,8 +1,8 @@
 on:
   push:
     branches: dev
-    paths:
-      - 'config/**.yaml'
+    # paths:
+    #   - 'config/**.yaml'
 
 name: trigger-aws
 
