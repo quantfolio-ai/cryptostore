@@ -67,8 +67,11 @@ class Parquet(Store):
 
         if self._write:
             for func, bucket, prefix, kwargs in zip(self._write, self.bucket, self.prefix, self.kwargs):
-                date = datetime.utcfromtimestamp(timestamp).strftime('%Y-%m-%d')
-                path = f'{exchange}/{data_type}/{pair}/{date}/{int(timestamp)}.parquet'
+                utc_date = datetime.utcfromtimestamp(timestamp)
+                year = utc_date.strftime('%Y')
+                month = utc_date.strftime('%m')
+                day = utc_date.strftime('%d')
+                path = f'{exchange}/{data_type}/pair={pair}/year={year}/month={month}/day={day}/{int(timestamp)}.parquet'
                 if prefix:
                     path = f"{prefix}/{path}"
                 func(bucket, path, file_name, **kwargs)
