@@ -36,7 +36,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        active_exchanges: ['binance', 'bitmex', 'coinbase']
+        active_exchanges: ['binance', 'bitmex', 'coinbase', 'bybit']
     steps:
     - name: Checkout
       id: checkout-source
