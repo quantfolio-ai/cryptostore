@@ -1,0 +1,7 @@
+exchanges:
+    BITMEX:
+      retries: -1
+      l2_book:
+        symbols: [BTC-USD, ETH-USD, XRP-USD, EOS-USD]
+        book_delta: false
+        trades: [BTC-USD, ETH-USD, XRP-USD, EOS-USD]
