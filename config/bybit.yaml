@@ -1,5 +1,5 @@
 exchanges:
-    BITMEX:
+    BYBIT:
       retries: -1
       l2_book:
         symbols: [BTC-USD, ETH-USD, XRP-USD, EOS-USD]
