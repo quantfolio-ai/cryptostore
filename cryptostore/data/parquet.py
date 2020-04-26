@@ -6,6 +6,7 @@ associated with this software.
 '''
 import os
 import glob
+import math
 from datetime import datetime
 
 import pyarrow as pa
@@ -67,7 +68,8 @@ class Parquet(Store):
 
         if self._write:
             for func, bucket, prefix, kwargs in zip(self._write, self.bucket, self.prefix, self.kwargs):
-                utc_date = datetime.utcfromtimestamp(timestamp)
+                accurate_stamp = (math.floor((timestamp - 30)/60)*60) + 59
+                utc_date = datetime.utcfromtimestamp(accurate_stamp)
                 year = utc_date.strftime('%Y')
                 month = utc_date.strftime('%m')
                 day = utc_date.strftime('%d')
