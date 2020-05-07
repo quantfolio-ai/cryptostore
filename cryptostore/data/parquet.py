@@ -71,7 +71,7 @@ class Parquet(Store):
                 year = utc_date.strftime('%Y')
                 month = utc_date.strftime('%m')
                 day = utc_date.strftime('%d')
-                path = f'{exchange}/{data_type}/pair={pair}/year={year}/month={month}/day={day}/{int(timestamp)}.parquet'
+                path = f'{exchange}/{data_type}/__pair={pair}/__year={year}/__month={month}/__day={day}/{int(timestamp)}.parquet'
                 if prefix:
                     path = f"{prefix}/{path}"
                 func(bucket, path, file_name, **kwargs)
